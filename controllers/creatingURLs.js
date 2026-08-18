@@ -13,15 +13,13 @@ const creatShortURL = async (req , res) => {
 
             const { url } = req.body;
 
-            let shortCode;
             let newUrlRecord;
 
             // 1. Attempt DB creation (Retry on duplicate code collision)
             let retries = 3;
             while (retries > 0) {
             try {
-                  shortCode = generateShortCode(8);
-                  newUrlRecord = await Url.create({ url, shortCode });
+                  newUrlRecord = await Url.create({ url, ShortURL });
                   break; // Creation succeeded, exit retry loop
             } catch (error) {
                   if (error.code === 11000 && retries > 1) {
@@ -36,7 +34,7 @@ const creatShortURL = async (req , res) => {
             // 2. Non-blocking Cache Write
             // If Redis is down, we log the error but STILL return 201 to the user
             try {
-            await redis.set(`url:${shortCode}`, url, {'EX': 86400});
+            await redis.set(`url:${ShortURL}`, url, {'EX': 86400});
             } catch (redisError) {
             console.error('Redis Caching Failed:', redisError.message);
             }

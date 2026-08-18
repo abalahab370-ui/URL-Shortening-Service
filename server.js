@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname , "public")));
 //5-preaparing Our Routes !
 
 
-app.use( '/api' , require ("./routes/rout")) ;
+app.use( '/' , require ("./routes/rout")) ;
 
-app.use('/api/generate' , require("")) ;
+app.use('/shorten' , require("")) ;
 
 
 

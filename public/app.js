@@ -76,7 +76,7 @@ checkStatsBtn.addEventListener('click', async () => {
     const data = await res.json();
 
     if (!res.ok) {
-      alert(data.error || 'Code not found in database.');
+      alert(data.error || 'This ShortURL doesnt Exist');
       statsResult.classList.add('hidden');
       return;
     }

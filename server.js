@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname , "public")));
 
 app.use( '/' , require ("./routes/rout")) ;
 
-app.use('/shorten' , require("")) ;
+app.use('/shorten' , require("./routes/generate")) ;
 
 
 

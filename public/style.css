@@ -3,7 +3,6 @@
   --card-bg: rgba(15, 19, 32, 0.75);
   --neon-cyan: #00f0ff;
   --neon-magenta: #ff0055;
-  --neon-purple: #a855f7;
   --text-main: #f1f5f9;
   --text-muted: #64748b;
   --border-color: rgba(0, 240, 255, 0.2);
@@ -29,7 +28,6 @@ body {
   position: relative;
 }
 
-/* Background Atmosphere */
 .bg-glow {
   position: absolute;
   width: 500px;
@@ -52,7 +50,6 @@ body {
   z-index: -1;
 }
 
-/* Container Layout */
 .app-container {
   width: 100%;
   max-width: 560px;
@@ -62,7 +59,6 @@ body {
   gap: 1.5rem;
 }
 
-/* Anime Header */
 .anime-header {
   text-align: center;
 }
@@ -112,7 +108,6 @@ body {
   margin-top: 0.2rem;
 }
 
-/* Cyber Cards */
 .cyber-card {
   position: relative;
   background: var(--card-bg);
@@ -124,7 +119,6 @@ body {
   overflow: hidden;
 }
 
-/* Cyber Corner Accents */
 .card-corner {
   position: absolute;
   width: 12px;
@@ -166,9 +160,7 @@ input:focus {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.25);
 }
 
-/* Cyber Buttons */
 .cyber-btn {
-  position: relative;
   font-family: var(--font-cyber);
   font-weight: 700;
   font-size: 0.8rem;
@@ -178,7 +170,11 @@ input:focus {
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  overflow: hidden;
+}
+
+.sm-btn {
+  padding: 0.53rem 0.9rem;
+  font-size: 0.72rem;
 }
 
 .primary-btn {
@@ -203,7 +199,19 @@ input:focus {
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
-/* Result Box */
+.danger-btn {
+  background: transparent;
+  border: 1px solid var(--neon-magenta);
+  color: var(--neon-magenta);
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.danger-btn:hover {
+  background: rgba(255, 0, 85, 0.15);
+  box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+}
+
 .result-box {
   margin-top: 1.2rem;
   background: rgba(0, 240, 255, 0.04);
@@ -242,6 +250,7 @@ input:focus {
   font-weight: 600;
   text-decoration: none;
   word-break: break-all;
+  overflow-wrap: anywhere;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
@@ -250,6 +259,7 @@ input:focus {
   color: #fff;
   padding: 0.5rem 0.9rem;
   font-size: 0.7rem;
+  flex-shrink: 0;
 }
 
 .copy-btn:hover {
@@ -257,7 +267,6 @@ input:focus {
   color: var(--bg-dark);
 }
 
-/* Analytics HUD Title */
 .card-title {
   display: flex;
   align-items: center;
@@ -277,11 +286,10 @@ input:focus {
   letter-spacing: 1px;
 }
 
-/* Stats Display */
 .stats-box {
   margin-top: 1.2rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   align-items: center;
   background: rgba(255, 0, 85, 0.05);
   border: 1px solid rgba(255, 0, 85, 0.2);
@@ -294,30 +302,35 @@ input:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-width: 95px;
   padding-right: 1.2rem;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
 .stat-number {
   font-family: var(--font-cyber);
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 900;
   color: var(--neon-magenta);
   text-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
 }
 
 .stat-label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-family: var(--font-cyber);
   color: var(--text-muted);
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .stat-details {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  overflow: hidden;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 
 .detail-label {
@@ -330,6 +343,27 @@ input:focus {
   font-size: 0.85rem;
   color: var(--text-main);
   word-break: break-all;
+  overflow-wrap: anywhere;
+  margin-bottom: 0.5rem;
+}
+
+.update-wrapper {
+  display: flex;
+  gap: 6px;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.update-wrapper input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+.update-wrapper .cyber-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .hidden { display: none !important; }

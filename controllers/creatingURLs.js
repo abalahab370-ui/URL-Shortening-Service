@@ -1,9 +1,9 @@
 const express = require("express") ;
 const client = require("../data/rdConnection") ;
-const longURLs = require("../data/longURLs") ;
+const Url = require("../data/longURLs") ;
 const generateURLs = require("./generatingURLs") ;
 
-const ShortURL = generateURLs() ;
+let ShortURL ;
 
 //So What we gonna do here ammmm , well i see that we got to get the req then generating a simple ShortUrl for it  :
 
@@ -19,9 +19,11 @@ const creatShortURL = async (req , res) => {
             let retries = 3;
             while (retries > 0) {
             try {
-                  newUrlRecord = await Url.create({ url, ShortURL });
+                  ShortURL = generateURLs() ;
+                  newUrlRecord = await Url.create({ 'url' : url, 'shortCode' : ShortURL });
                   break; // Creation succeeded, exit retry loop
             } catch (error) {
+                  console.error(error.code);
                   if (error.code === 11000 && retries > 1) {
                   retries--;
                   continue;
@@ -34,7 +36,13 @@ const creatShortURL = async (req , res) => {
             // 2. Non-blocking Cache Write
             // If Redis is down, we log the error but STILL return 201 to the user
             try {
-            await redis.set(`url:${ShortURL}`, url, {'EX': 86400});
+                  // Store as a Hash map in Redis
+                  await client.hSet(`url:${ShortURL}`, {
+                  url: url,
+                  accessCount: 0
+                  });
+                  await client.expire(`url:${ShortURL}`, 86400); // Set 24h TTL
+
             } catch (redisError) {
             console.error('Redis Caching Failed:', redisError.message);
             }

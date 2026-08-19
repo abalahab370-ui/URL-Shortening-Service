@@ -14,14 +14,14 @@
   <div class="grid-overlay"></div>
 
   <main class="app-container">
-    <!-- Header Badge -->
+    <!-- Header -->
     <header class="anime-header">
       <div class="badge"><span class="pulse-dot"></span> SYSTEM ONLINE // V1.0</div>
       <h1 class="glitch-title">LINK<span class="highlight">SHIFT</span></h1>
       <p class="japanese-sub">高速URL短縮ポータル — FAST LINK SHORTENER</p>
     </header>
 
-    <!-- Shortener Input Card -->
+    <!-- 1. CREATE CARD (POST /shorten) -->
     <section class="cyber-card">
       <div class="card-corner top-left"></div>
       <div class="card-corner bottom-right"></div>
@@ -30,14 +30,11 @@
         <label for="long-url" class="input-label">TARGET URL</label>
         <div class="input-wrapper">
           <input type="url" id="long-url" placeholder="https://enter-your-long-url.com/..." required autocomplete="off" />
-          <button type="submit" class="cyber-btn primary-btn">
-            <span>GENERATE</span>
-            <div class="btn-glow"></div>
-          </button>
+          <button type="submit" class="cyber-btn primary-btn">GENERATE</button>
         </div>
       </form>
 
-      <!-- Short Code Result -->
+      <!-- New Link Result Output -->
       <div id="result-card" class="result-box hidden">
         <div class="result-header">
           <span class="status-tag">GENERATED // 生成完了</span>
@@ -50,29 +47,41 @@
       </div>
     </section>
 
-    <!-- Analytics Section -->
+    <!-- 2. MANAGEMENT & ANALYTICS HUD (GET, PUT, DELETE) -->
     <section class="cyber-card stats-card">
       <div class="card-corner top-left"></div>
       <div class="card-corner bottom-right"></div>
 
       <div class="card-title">
-        <h2>ANALYTICS HUD</h2>
-        <span class="title-jp">データ分析</span>
+        <h2>MANAGEMENT & ANALYTICS</h2>
+        <span class="title-jp">データ分析 & 管理</span>
       </div>
 
+      <!-- Search Code Form -->
       <div class="input-wrapper">
-        <input type="text" id="stats-code" placeholder="Enter Short Code (e.g., abc123)" autocomplete="off" />
-        <button id="check-stats-btn" class="cyber-btn secondary-btn">ANALYZE</button>
+        <input type="text" id="stats-code" placeholder="Enter Short Code (e.g., abc12345)" autocomplete="off" />
+        <button id="check-stats-btn" class="cyber-btn secondary-btn">LOAD</button>
       </div>
 
+      <!-- Loaded Code Management Box -->
       <div id="stats-result" class="stats-box hidden">
         <div class="stat-counter">
           <span class="stat-number" id="access-count">0</span>
           <span class="stat-label">TOTAL ACCESSES</span>
         </div>
+
         <div class="stat-details">
-          <span class="detail-label">DESTINATION:</span>
+          <span class="detail-label">CURRENT DESTINATION:</span>
           <span class="detail-value" id="stats-original-url">---</span>
+          
+          <!-- Update Destination Input (PUT) -->
+          <div class="update-wrapper">
+            <input type="url" id="update-url-input" placeholder="Type new URL to update..." />
+            <button id="update-btn" class="cyber-btn primary-btn sm-btn">UPDATE</button>
+          </div>
+
+          <!-- Delete Record Button (DELETE) -->
+          <button id="delete-btn" class="cyber-btn danger-btn sm-btn">DELETE CODE</button>
         </div>
       </div>
     </section>

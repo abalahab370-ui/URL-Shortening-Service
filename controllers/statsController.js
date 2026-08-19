@@ -15,7 +15,7 @@ const statsController = async (req , res) => {
       // 2. Cache Miss: Fallback to MongoDB
       const dbResult = await url.findOne({ shortCode }).exec() ;
       if (!dbResult) {
-        return res.status(404).json({ message: 'There is no URL related to this ShortCode' });
+        return res.status(404).json({ error : 'There is no URL related to this ShortCode' });
       }
 
 

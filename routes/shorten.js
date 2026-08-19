@@ -6,9 +6,14 @@ const statsController = require("../controllers/statsController") ;
 
 router.post ( '/' , creatShortURL ) ;
 
-router.get('/:shortCode',redirectingURL );
+router.get ('/:shortCode',redirectingURL );
 
-router.get ( '/:shortCode/stats' , statsController )
+router.put ( '/:shortCode' , updatingURL ) ;
+
+router.put ( '/:shortCode' , deletingURL ) ;
+
+router.get ( '/:shortCode/stats' , statsController );
+
 
 
 

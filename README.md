@@ -1,4 +1,4 @@
-# ⚡ LINKSHIFT // FAST LINK SHORTENER
+# LINKSHIFT // FAST LINK SHORTENER
 
 > A high-performance, caching-first URL shortener and analytics engine built with Node.js, Express, Redis Hashes, and MongoDB.
 
@@ -8,11 +8,11 @@
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
-🌐 **Live Link:** [https://url-shortening-service-7u5q.onrender.com](https://url-shortening-service-7u5q.onrender.com)
+**Live Link:** [https://url-shortening-service-7u5q.onrender.com](https://url-shortening-service-7u5q.onrender.com)
 
 ---
 
-## ⚡ Key Features
+##  Key Features
 
 * **Sub-Millisecond Redirects:** Redirects are served directly from Redis RAM using Redis Hashes (`hGetAll`), bypassing disk reads.
 * **Non-Blocking Atomic Counters:** Uses Redis `hIncrBy` for zero-latency click counting, paired with background asynchronous syncs (`$inc`) to MongoDB.
@@ -22,7 +22,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
@@ -33,7 +33,7 @@
 
 ---
 
-## 🔄 Caching Architecture & Data Flow
+##  Caching Architecture & Data Flow
 
 1. **Incoming Request:** User accesses a shortened link (`GET /:shortCode`).
 2. **Redis RAM Check:** Server queries Redis Hash key (`url:shortCode`).
@@ -42,7 +42,7 @@
 
 ---
 
-## 🚀 Local Installation & Setup
+##  Local Installation & Setup
 
 ### 1. Prerequisites
 Ensure you have the following installed on your environment:

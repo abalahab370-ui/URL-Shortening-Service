@@ -7,6 +7,7 @@ const app = express() ;
 const mongoose = require("mongoose") ;
 const PORT = process.env.PORT || 5500 ;
 const path = require("path");
+const rateLimiter = require("./controllers/rateLimit") ;
 
 //1-Making Connection To Our DataBase !
 const dbConnection = require("./data/dbConnection") ;
@@ -24,7 +25,12 @@ app.use(express.json()) ; // to handle json contant !
 app.use(express.static(path.join(__dirname , "public")));
 /* there is more middlewares are comming next  */
 
-//5-preaparing Our Routes !
+
+//5-adding a rateLimit middleware !
+
+app.use('/' , rateLimiter ) ;
+
+//6-preaparing Our Routes !
 
 
 app.use( '/' , require ("./routes/rout")) ;

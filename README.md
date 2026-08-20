@@ -9,7 +9,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 
 **Live Link:** [https://url-shortening-service-7u5q.onrender.com](https://url-shortening-service-7u5q.onrender.com)
-**Project URL:** [https://github.com/abalahab370-ui/URL-Shortening-Service](https://github.com/abalahab370-ui/URL-Shortening-Service)
+**GitHub Repository:** [https://github.com/abalahab370-ui/URL-Shortening-Service](https://github.com/abalahab370-ui/URL-Shortening-Service)
 ---
 
 ##  Key Features

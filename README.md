@@ -14,6 +14,7 @@
 
 ##  Key Features
 
+* **Rate Limit Check:** Middleware verifies IP request count via Redis `INCR` key counters before processing.
 * **Sub-Millisecond Redirects:** Redirects are served directly from Redis RAM using Redis Hashes (`hGetAll`), bypassing disk reads.
 * **Non-Blocking Atomic Counters:** Uses Redis `hIncrBy` for zero-latency click counting, paired with background asynchronous syncs (`$inc`) to MongoDB.
 * **Smart Cache Fallback:** Automatically queries MongoDB on cache misses, populating Redis RAM with a 24-hour TTL (`expire`).

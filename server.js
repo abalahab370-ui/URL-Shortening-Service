@@ -33,9 +33,9 @@ app.use('/' , rateLimiter ) ;
 //6-preaparing Our Routes !
 
 
-app.use( '/' , require ("./routes/rout")) ;
+app.use( '/' , rateLimiter ,require ("./routes/rout")) ;
 
-app.use('/shorten' , require("./routes/shorten")) ;
+app.use('/shorten' , rateLimiter ,require("./routes/shorten")) ;
 
 app.get("/ping", rateLimiter , (req, res) => {
   return res.status(200).send("OK");

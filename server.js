@@ -37,8 +37,14 @@ app.use( '/' , require ("./routes/rout")) ;
 
 app.use('/shorten' , require("./routes/shorten")) ;
 
+app.get("/ping", rateLimiter , (req, res) => {
+  return res.status(200).send("OK");
+});
 
 
+app.use( (req, res) => {
+  return res.status(404).send("Not Found.");
+});
 
 
 app.listen ( PORT , () => {
